@@ -28,18 +28,18 @@ export class ActividadesVespertinasLayoutsComponent implements OnInit{
   }
 
   obtenerActividades(){
-    this.loading = true;
+    this.loading = false;
     this._actividadesServices.getActividades().subscribe({
       next: (data) =>{
         this.loading = false;
         this.actividades = data.filter(e => e.actividadInformacion.horario?.hora?.includes('P.M'));
         this.updatePaginatedActividades();
-      },
+      }/*,
       error: (e) => {
         this.loading = false
         this.router.navigate([''])
         this._toastServices.error("Problemas con el servidor","Error")
-      }
+      }*/
     })
   }    
 

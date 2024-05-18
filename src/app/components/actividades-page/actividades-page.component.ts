@@ -15,6 +15,8 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./actividades-page.component.css']
 })
 export class ActividadesPageComponent implements OnInit{
+  
+  
   form: FormGroup;  
   loading: boolean = false;  
   listHorarios!: IHorario[];
@@ -45,13 +47,13 @@ export class ActividadesPageComponent implements OnInit{
     this.loading = true;
     this._horarios.getHorarios().subscribe({
       next: (data) =>{
-        this.loading = false;
+        this.loading = true;
         this.listHorarios = data;        
-      },
+      }/*,
       error: (e) => {
         this.loading = false
         this._toastServices.error("Problemas con el servidor","Error")
-      }
+      }*/
     })
   }  
 
@@ -99,11 +101,11 @@ export class ActividadesPageComponent implements OnInit{
         
         this._toastServices.success(`${repuesta.leyenda}`,`${repuesta.respuesta}`);
         this.router.navigate([''])
-      },
+      }/*,
       error: () =>{
         this.loading = false
         this._toastServices.error("Intente luego","Error")
-      }
+      }*/
     })
   }
 }

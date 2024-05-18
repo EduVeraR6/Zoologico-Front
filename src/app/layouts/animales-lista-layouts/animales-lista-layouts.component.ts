@@ -41,18 +41,18 @@ export class AnimalesListaLayoutsComponent implements OnInit{
 
 
   obtenerAnimales(){
-    this.loading = true;
+    this.loading = false; //cambiar a true
     this.animalesServices.getAnimales().subscribe({
       next: (data) =>{      
         this.loading = false;
         this.animales = data.filter(e => e.id_animales);
         this.updatePaginatedAnimales();                  
-      },
+      }/*,
       error: (e) => {
         this.loading = false
         this.router.navigate([''])
         this._toastServices.error("Problemas con el servidor","Error")
-      }
+      }*/
     })
   }
   

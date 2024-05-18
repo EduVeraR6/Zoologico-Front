@@ -39,17 +39,17 @@ export class ListasVoluntariosComponent implements OnInit {
   }
 
   obtenerVoluntarios(){
-    this.loading = true;
+    this.loading = false;
     this._voluntariosServices.getVoluntarios().subscribe({
       next: (data) =>{        
         this.loading = false;
         this.people = data;
-      },
+      }/*,
       error: (e) => {
         this.loading = false
         this.router.navigate([''])
         this._toastServices.error("Problemas con el servidor","Error")
-      }
+      }*/
     })
   }      
 }

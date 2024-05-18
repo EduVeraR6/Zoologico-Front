@@ -39,17 +39,17 @@ export class SettingSolicitudVDefaultComponent implements OnInit{
 
   
   obtenerSolicitud(){
-    this.loading = true;
+    this.loading = false;
     this._solicitudService.getVoluntarios().subscribe({
       next: (data) =>{
         this.loading = false;
         this.dataSource.data = data;
-      },
+      }/*,
       error: (e) => {
         this.loading = false
         this.router.navigate([''])
         this._toastServices.error("Problemas con el servidor","Error")
-      }
+      }*/
     })
   }
 

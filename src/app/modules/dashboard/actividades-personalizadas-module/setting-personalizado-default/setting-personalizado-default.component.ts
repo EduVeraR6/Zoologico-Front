@@ -37,17 +37,17 @@ export class SettingPersonalizadoDefaultComponent implements OnInit{
 
 
   obtenerActividades(){
-    this.loading = true;
+    this.loading = false;
     this._actividadesServices.getPersonalizados().subscribe({
       next: (data) =>{
         this.loading = false;
         this.dataSource.data = data;
-      },
+      }/*,
       error: (e) => {
         this.loading = false
         this.router.navigate([''])
         this._toastServices.error("Problemas con el servidor","Error")
-      }
+      }*/
     })
   }    
 
