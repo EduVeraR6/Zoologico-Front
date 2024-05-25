@@ -31,3 +31,10 @@
     color: #FFA500;
     transform: scale(1.1);
 }
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}

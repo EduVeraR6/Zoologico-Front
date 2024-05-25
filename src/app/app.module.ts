@@ -94,12 +94,12 @@ import { SettingSolicitudVInfoComponent } from './modules/dashboard/solicitud_vo
     SettingSolicitudVInfoComponent
   ],
   imports: [
+    LayoutModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    LayoutModule,
     HttpClientModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',

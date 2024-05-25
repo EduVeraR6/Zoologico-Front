@@ -17,7 +17,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./setting-animales-default.component.css']
 })
 export class SettingAnimalesDefaultComponent {
- 
   displayedColumns: string[] = ['nombre', 'edad', 'especie', 'genero', 'origen', 'habitat','observaciones','accion'];
   dataSource = new MatTableDataSource<IAnimales>();
   loading: boolean = false;  
@@ -46,17 +45,17 @@ export class SettingAnimalesDefaultComponent {
   
   
   obtenerAnimales(){
-    this.loading = false;
+    this.loading = true;
     this._animalesService.getAnimales().subscribe({
       next: (data) =>{
         this.loading = false;
         this.dataSource.data = data;
-      }/*,
+      },
       error: (e) => {
         this.loading = false
         this.router.navigate([''])
         this.toast.error("Problemas con el servidor","Error")
-      }*/
+      }
     })
   }
 

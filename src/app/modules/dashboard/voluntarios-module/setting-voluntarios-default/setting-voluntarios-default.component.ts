@@ -36,17 +36,17 @@ export class SettingVoluntariosDefaultComponent implements OnInit{
   @ViewChild(MatSort) sort!: MatSort;
 
   obtenerVoluntarios(){
-    this.loading = false;
+    this.loading = true;
     this._voluntariosServices.getVoluntarios().subscribe({
       next: (data) =>{
         this.loading = false;
         this.dataSource.data = data;
-      }/*,
+      },
       error: (e) => {
         this.loading = false
         this.router.navigate([''])
         this._toastServices.error("Problemas con el servidor","Error")
-      }*/
+      }
     })
   }    
 
