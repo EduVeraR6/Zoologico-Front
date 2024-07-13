@@ -27,7 +27,15 @@ export class VoluntariosService {
     return this.http.get<IVoluntarios[]>(`${this.myAppUrl}${this.myApiUrl}${GET_VOLUNTARIOS}`,{headers : header});
   }
   crudVoluntarios(voluntario: IVoluntarios): Observable<IRespuestaSP>{
-    return this.http.post<IRespuestaSP>(`${this.myAppUrl}${this.myApiUrl}`,voluntario);
+
+    let auth_token = localStorage.getItem('token_value');
+   
+    const header = new HttpHeaders({
+        'Content-Type':'application/json',
+        'Authorization':`bearer ${auth_token}`
+    });
+
+    return this.http.post<IRespuestaSP>(`${this.myAppUrl}${this.myApiUrl}`,voluntario , {headers : header});
   }
 
 } 

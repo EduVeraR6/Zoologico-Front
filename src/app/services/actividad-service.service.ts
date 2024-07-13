@@ -1,6 +1,6 @@
 import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IActividad } from '../interfaces/iactividad';
 import { GET_ACTIVIDADES, GET_HORARIOS } from '../interfaces/itransacciones';
@@ -27,7 +27,15 @@ export class ActividadServiceService {
   }
 
   crudActividad(actividad: IActividad): Observable<IRespuestaSP>{
-    return this.http.post<IRespuestaSP>(`${this.myAppUrl}${this.myApiUrl}`,actividad);
+
+    let auth_token = localStorage.getItem('token_value');
+   
+    const header = new HttpHeaders({
+        'Content-Type':'application/json',
+        'Authorization':`bearer ${auth_token}`
+    });
+
+    return this.http.post<IRespuestaSP>(`${this.myAppUrl}${this.myApiUrl}`,actividad, {headers : header});
   }
 
 }
